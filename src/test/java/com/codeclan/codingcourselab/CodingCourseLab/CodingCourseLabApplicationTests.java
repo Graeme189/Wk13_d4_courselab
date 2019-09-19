@@ -57,4 +57,23 @@ public class CodingCourseLabApplicationTests {
 		assertEquals("17-09-2019", found.get(0).getDate());
 	}
 
+	@Test
+	public void canGetCustomersByTownAndCourse(){
+		List<Customer> found = customerRepository.findCustomersByTownAndCourse("Edinburgh", 1L);
+		assertEquals("Graeme", found.get(0).getName());
+	}
+
+	@Test
+	public void canGetAllCustomersOverAgeInTownByCourse() {
+		List<Customer> found = customerRepository.getAllCustomersOverAgeInTownByCourse(40, "Edinburgh", 1L);
+		assertEquals("Graeme", found.get(0).getName());
+	}
+
+	@Test
+	public void cantGetAllCustomersOverAgeInTownByCourse() {
+		List<Customer> found = customerRepository.getAllCustomersOverAgeInTownByCourse(50, "Edinburgh", 1L);
+		assertEquals(0, found.size());
+	}
+
+
 }
