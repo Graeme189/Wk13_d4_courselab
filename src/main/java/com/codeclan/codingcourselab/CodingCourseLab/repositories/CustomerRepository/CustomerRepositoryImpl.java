@@ -56,6 +56,7 @@ public class CustomerRepositoryImpl implements CustomerRepositoryCustom {
             Criteria cr = session.createCriteria(Customer.class);
             cr.createAlias("bookings", "bookingAlias");
             cr.add(Restrictions.eq("bookingAlias.course.id", id));
+            cr.add(Restrictions.ilike("town", town));
             cr.add(Restrictions.gt("age", age));
             results = cr.list();
         }

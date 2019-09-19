@@ -75,5 +75,9 @@ public class CodingCourseLabApplicationTests {
 		assertEquals(0, found.size());
 	}
 
-
+	@Test
+	public void canCheckCapitalisation() {
+		List<Customer> found = customerRepository.getAllCustomersOverAgeInTownByCourse(40, "edinburgh", 1L);
+		assertEquals("Graeme", found.get(0).getName());
+	}
 }
