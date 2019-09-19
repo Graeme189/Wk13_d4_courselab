@@ -1,5 +1,6 @@
 package com.codeclan.codingcourselab.CodingCourseLab;
 
+import com.codeclan.codingcourselab.CodingCourseLab.models.Booking;
 import com.codeclan.codingcourselab.CodingCourseLab.models.Course;
 import com.codeclan.codingcourselab.CodingCourseLab.models.Customer;
 import com.codeclan.codingcourselab.CodingCourseLab.repositories.BookingRepository.BookingRepository;
@@ -42,6 +43,18 @@ public class CodingCourseLabApplicationTests {
 	public void canFindCustomerByCourse() {
 		List<Customer> found = customerRepository.findCustomersByCourseID(1L);
 		assertEquals("Graeme", found.get(0).getName());
+	}
+
+	@Test
+	public void canfindCoursesbyCustomerID(){
+		List<Course> found = courseRepository.findCoursesbyCustomerID(1L);
+		assertEquals("Python", found.get(0).getName());
+	}
+
+	@Test
+	public void canGetBookingsByDate(){
+		List<Booking> found = bookingRepository.findBookingsByDate("17-09-2019");
+		assertEquals("17-09-2019", found.get(0).getDate());
 	}
 
 }
