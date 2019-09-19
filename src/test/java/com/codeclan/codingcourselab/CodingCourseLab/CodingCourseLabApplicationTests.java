@@ -1,6 +1,7 @@
 package com.codeclan.codingcourselab.CodingCourseLab;
 
 import com.codeclan.codingcourselab.CodingCourseLab.models.Course;
+import com.codeclan.codingcourselab.CodingCourseLab.models.Customer;
 import com.codeclan.codingcourselab.CodingCourseLab.repositories.BookingRepository.BookingRepository;
 import com.codeclan.codingcourselab.CodingCourseLab.repositories.CourseRepository.CourseRepository;
 import com.codeclan.codingcourselab.CodingCourseLab.repositories.CustomerRepository.CustomerRepository;
@@ -35,6 +36,12 @@ public class CodingCourseLabApplicationTests {
 	public void canFindCourseByRating() {
 		List<Course> found = courseRepository.findCoursesByRating(3);
 		assertEquals("Python", found.get(0).getName());
+	}
+
+	@Test
+	public void canFindCustomerByCourse() {
+		List<Customer> found = customerRepository.findCustomersByCourseID(1L);
+		assertEquals("Graeme", found.get(0).getName());
 	}
 
 }
